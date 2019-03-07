@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.data = params;
       });
       console.log(this.data);
-    }
+    });
     
     //this.loginService.doLogin(this.loginObj).subscribe( result => function() {
      // console.log(result);
