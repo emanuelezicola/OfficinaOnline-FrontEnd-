@@ -1,0 +1,24 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Login Form -->
+    <form [formGroup]="myForm">
+      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input formControlName="email" type="text" id="inputEmail" class="form-control" placeholder="Email" required="true"
+        autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="true"
+        autofocus="" >
+      <br>
+      <input type="button" class="fadeIn fourth" (click)="login()" value="Accedi"/>
+      <p class="mt-5 mb-3 text-muted">© 2018-2019</p>
+    </form>
+
+    <!-- Remind Passowrd 
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>-->
+
+  </div>
+</div>
