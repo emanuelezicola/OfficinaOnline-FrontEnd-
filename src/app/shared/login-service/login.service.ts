@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { subscribeOn } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,13 +14,13 @@ export class LoginService {
 
 
 
-  doLogin =  function(loginObj){
+  doLogin(params) : Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post("http://localhost:8080/OfficinaOnline/rest/utente/login", 
-          loginObj, httpOptions);
+    return this.http.post<any>("http://localhost:8080/OfficinaOnline/rest/utente/login", 
+    params, httpOptions);
   }
 }

@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs/operators';
 import { LoginService } from '../shared/login-service/login.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,OnDestroy {
 
   constructor(private route:ActivatedRoute, private fb:FormBuilder, private loginService: LoginService, private router: Router) { }
+
+  public subscription: Subscription;
 
   myForm:FormGroup;
 
@@ -29,16 +32,25 @@ export class LoginComponent implements OnInit {
 
   login(){
 
-    this.route.paramMap.subscribe(params => {
-      this.loginService.doLogin(this.loginObj).subscribe( params => function() {
+    this.subscription =  this.loginService.doLogin(this.loginObj).subscribe( params => {
         this.data = params;
-      });
-      console.log(this.data);
-    });
-    
-    //this.loginService.doLogin(this.loginObj).subscribe( result => function() {
-     // console.log(result);
-   // });
+        
+        if(this.data == null || this.data.status == false) {
+          //TORNARE SU PAGINA DI LOGIN
+        } 
+        else {
+          alert("CICCIOOOO");
+        }
+
+
+
+
+
+      },err =>console.log(err));
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   ngOnInit() {
