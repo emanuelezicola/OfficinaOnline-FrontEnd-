@@ -34,15 +34,18 @@ export class LoginComponent implements OnInit,OnDestroy {
 
     this.subscription =  this.loginService.doLogin(this.loginObj).subscribe( params => {
         this.data = params;
+
+        console.log(this.data);
         
         if(this.data == null || this.data.status == false) {
           //TORNARE SU PAGINA DI LOGIN
+          this.router.navigate(['']);
+          alert(this.data.obj);
+          return;
         } 
-        else {
-          alert("CICCIOOOO");
-        }
-
-
+        
+        this.router.navigate(['home']);
+        
 
 
 
