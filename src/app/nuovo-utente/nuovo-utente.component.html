@@ -1,0 +1,56 @@
+<form class="form-horizontal" [formGroup]="myForm">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Registrazione</legend>
+    </div>
+    <div class="control-group">
+      <!--Nome-->
+      <label class="control-label"  for="username">Nome</label>
+      <div class="controls">
+        <input formControlName="nome" required="true" type="text" id="nome" placeholder="Es. Mario" class="input-xlarge">
+      </div>
+    </div>
+
+    <div class="control-group">
+        <!--Cognome-->
+        <label class="control-label"  for="username">Cognome</label>
+        <div class="controls">
+          <input formControlName="cognome" type="text" id="cognome" placeholder="Es. Rossi" class="input-xlarge">
+        </div>
+      </div>
+ 
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input formControlName="email" type="text" id="email" placeholder="Es. mariorossi@esempio.it" class="input-xlarge">
+        <p class="help-block">Sarà la mail con la quale effettuare il login</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input formControlName="password" type="password" id="password" class="input-xlarge">
+        <p class="help-block">La password deve essere almeno di 4 caratteri</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!--Ripeti Password -->
+      <label class="control-label"  for="password_confirm">Ripeti password</label>
+      <div class="controls">
+        <input formControlName="password_repeat" type="password" id="password_confirm" class="input-xlarge">
+        <p class="help-block">Conferma la password</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" (click)="registrati()">Registrati</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
